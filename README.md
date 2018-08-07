@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # README
 
 This README would normally document whatever steps are necessary to get the
@@ -22,3 +23,7 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+=======
+# Blog
+Final Assessment
+>>>>>>> 2de63d37cd78174c6b10a619c0cd408f8f3a915c
