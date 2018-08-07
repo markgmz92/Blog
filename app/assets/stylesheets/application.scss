@@ -12,6 +12,8 @@
  *
  */
  @import "bootstrap";
+ @import "welcome";
+ @import "navigation";
 
  .container
  {padding-top:15px;}
@@ -23,5 +25,17 @@
  .form-control
  {
  	background-color: #efeeef;
- 	border: 2px solid #eeccdd;
+ 	border: 3px solid #D3D3D3;
  }
+
+
+.btn-light
+{
+	background-color: #efeeef;
+ 	border: 3px solid #D3D3D3;
+}
+
+.jumbotron
+{
+	background-color:#ADD8E6;
+}
