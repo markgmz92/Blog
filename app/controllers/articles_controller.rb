@@ -17,6 +17,14 @@ except: [:index, :show]
     @article = Article.find(params[:id])
   end
 
+  def search
+    if params[:search].blank?
+      @articles = Article.all
+    else
+      @articles = Article.search(params)
+    end
+  end
+
   def update
     @article = Article.find(params[:id])
     if @article.update(article_params)
