@@ -1,23 +1,58 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">My Blog</a>
+  <a class="navbar-brand">My Blog</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarCollapse">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
+          <li class="nav-item">
                     <!-- Nav Link, action, url, style -->
-        <%= active_link_to 'Home', 'welcome', 'index', welcome_index_path, "active_nav-link" %>
-      </li>
-      <li class="nav-item">
+          <%= active_link_to 'Home', 'welcome', 'index', welcome_index_path, "active_nav-link" %>
+          </li>
+          <li class="nav-item">
           <%= active_link_to 'Blog', 'articles','index', articles_path,  "active_nav-link" %>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">About</a>
-      </li>
+          </li>
+
+          <li class="nav-item">
+          <%=link_to 'Create Account', new_user_path, class: "active_nav-link" %>
+          </li>
+
+          <% if current_user && current_user.admin? %>
+          <li class="nav-item">
+              <%= active_link_to 'Subscribers', 'subscribers','index', subscribers_path,  "active_nav-link" %>
+          </li>
+
+          <li class="nav-item">
+          <%=link_to 'Sign Out', session_path('active'), method: :delete, class: "active_nav-link" %>
+          </li>
+
+          <li class="nav-link">
+          Hi, Admin! <% current_user.userid %>
+          </li>
+          <% elsif current_user %><!-- This is not for an admin but regular user -->
+          <li class="nav-item">
+          <%=link_to 'Sign Out', session_path('active'), method: :delete, class: "active_nav-link" %>
+          </li>
+
+          <li class="nav-link">
+          Hi <% current_user.userid %>
+          </li>
+
+          <% else %>
+
+          <li class="nav-item">
+          <%=link_to 'Sign In', new_session_path, class: "active_nav-link" %>
+          </li>
+          <li class="nav-item">
+          <%=link_to 'Create Account', new_user_path, class: "active_nav-link" %>
+          </li>
+          <% end %>
+          </li>
     </ul>
+
+
     <div class="form-inline mt-2 mt-md-0">
     <%= form_tag search_articles_path, method: :get do %>
     <%= text_field_tag :search, nil, placeholder: 'Search', class: "form-control mr-sm-2"%>

@@ -1,7 +1,5 @@
 class SubscribersController < ApplicationController
-http_basic_authenticate_with name: "markgmz92", password: "markgmz@92",
-except: [:create]
-
+  before_action :admin_authorize, :only => [:index, :show, :search]
 
   def index
     @subscribers = Subscriber.all
