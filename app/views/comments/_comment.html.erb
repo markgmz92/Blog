@@ -1,9 +1,8 @@
-
 <h3> Comments </h3>
 	<% @article.comments.each do |comment| %>
 	<p>
 		<strong>Commenter:</strong>
-		<%= comment.commentor %>
+		<%= comment.commenter %>
 	</p>
 	<p>
 		<%= comment.created_at.strftime('%A %-b %-d, %Y | %l.%M %p') %>

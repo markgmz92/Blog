@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
 
-before_action :autorize, :only => [:create]
+before_action :authorize, :only => [:create]
 before_action :admin_authorize, :only => [:destroy]
 
 def create

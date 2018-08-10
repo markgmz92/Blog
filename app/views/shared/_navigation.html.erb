@@ -1,22 +1,20 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand">My Blog</a>
+  <%= link_to 'Donation',braintree_new_path, class: "navbar-brand" %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarCollapse">
     <ul class="navbar-nav mr-auto">
+
+
           <li class="nav-item">
                     <!-- Nav Link, action, url, style -->
           <%= active_link_to 'Home', 'welcome', 'index', welcome_index_path, "active_nav-link" %>
           </li>
           <li class="nav-item">
           <%= active_link_to 'Blog', 'articles','index', articles_path,  "active_nav-link" %>
-          </li>
-
-          <li class="nav-item">
-          <%=link_to 'Create Account', new_user_path, class: "active_nav-link" %>
           </li>
 
           <% if current_user && current_user.admin? %>
@@ -31,13 +29,13 @@
           <li class="nav-link">
           Hi, Admin! <% current_user.userid %>
           </li>
-          <% elsif current_user %><!-- This is not for an admin but regular user -->
+          <% elsif current_user %><!-- This is not for an admin but  for regular users -->
           <li class="nav-item">
           <%=link_to 'Sign Out', session_path('active'), method: :delete, class: "active_nav-link" %>
           </li>
 
           <li class="nav-link">
-          Hi <% current_user.userid %>
+          <% current_user.userid %>
           </li>
 
           <% else %>
@@ -48,6 +46,7 @@
           <li class="nav-item">
           <%=link_to 'Create Account', new_user_path, class: "active_nav-link" %>
           </li>
+
           <% end %>
           </li>
     </ul>
@@ -59,9 +58,5 @@
     <%= submit_tag "Search",class:"btn btn-light my-2 my-sm-0"%>
     <% end %>
   </div>
-    <!--<form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-light my-2 my-sm-0" type="submit">Search</button>
-    </form>-->
     </div>
 </nav>

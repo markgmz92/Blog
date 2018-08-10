@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
+  get 'braintree/new'
   #get 'sessions/new'
   resources :sessions
   resources :users
+  post 'braintree/checkout' => "braintree#checkout", as: "braintree_checkout"
+  post 'braintree/new'
   get 'welcome/index'
 
     resources :articles do
