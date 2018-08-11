@@ -2,9 +2,10 @@ require 'rspec_helper'
 
 class UserTest < ActiveSupport::TestCase
 
-describe Contact do
-  it "has a valid factory"
-  it "is invalid without a f_name"
-  it "is invalid without a l-name"
+ test 'validations' do
+  it {should validata_presence_of :email}
+  it {should validate_presence_of :password}
+  it {should validate_confirmation_of :password}
+  it {should_validate_uniqueness_of(:email).case_insensitive}
 end
 end
