@@ -13,25 +13,31 @@
                     <!-- Nav Link, action, url, style -->
           <%= active_link_to 'Home', 'welcome', 'index', welcome_index_path, "active_nav-link" %>
           </li>
-          <li class="nav-item">
-          <%= active_link_to 'Blog', 'articles','index', articles_path,  "active_nav-link" %>
-          </li>
-
           <% if current_user && current_user.admin? %>
           <li class="nav-item">
               <%= active_link_to 'Subscribers', 'subscribers','index', subscribers_path,  "active_nav-link" %>
           </li>
 
           <li class="nav-item">
+          <%= active_link_to 'Blog', 'articles','index', articles_path,  "active_nav-link" %>
+          </li>
+
+          <li class="nav-item">
           <%=link_to 'Sign Out', session_path('active'), method: :delete, class: "active_nav-link" %>
           </li>
+
 
           <li class="nav-link">
           Hi, Admin! <% current_user.userid %>
           </li>
+
           <% elsif current_user %><!-- This is not for an admin but  for regular users -->
           <li class="nav-item">
           <%=link_to 'Sign Out', session_path('active'), method: :delete, class: "active_nav-link" %>
+          </li>
+
+          <li class="nav-item">
+          <%= active_link_to 'Blog', 'articles','index', articles_path,  "active_nav-link" %>
           </li>
 
           <li class="nav-link">
@@ -50,7 +56,6 @@
           <% end %>
           </li>
     </ul>
-
 
     <div class="form-inline mt-2 mt-md-0">
     <%= form_tag search_articles_path, method: :get do %>
