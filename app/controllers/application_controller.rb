@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
 end
 
   def admin_authorize
-    redirect_to new_session_path,
+    redirect_to root_path,
     alert: "Only for Admin!" unless current_user.admin
   end
 
